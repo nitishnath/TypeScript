@@ -1,6 +1,6 @@
 // Polyfill for AggregateError for older environments
 class AggregateError extends Error {
-    errors: any[];
+    errors: any[]; // this is beacause in TS class we need to expicitly declare properties that will be assigned in the constructor
     
     constructor(errors: any[], message?: string) {
         super(message);
@@ -57,10 +57,10 @@ myPromiseAny([promise1, promise2, promise3]).then((value) => {
     console.log(value); // "two"
 })
 
-// Test with all rejected promises - should reject with AggregateError
-myPromiseAny([promise3, promise4]).catch((error) => {
-  console.log(error.message); // "All promises were rejected"
-  console.log(error.errors); // Array of all rejection errors
-});
+// // Test with all rejected promises - should reject with AggregateError
+// myPromiseAny([promise3, promise4]).catch((error) => {
+//   console.log(error.message); // "All promises were rejected"
+//   console.log(error.errors); // Array of all rejection errors
+// });
 
 
