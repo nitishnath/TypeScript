@@ -37,7 +37,8 @@ myPromiseAll([promise1, promise2, promise3])
     .catch(error => console.error(error));
 
 // Test with rejection
-const rejectPromise = Promise.reject(new Error('Rejected'));
+// const rejectPromise = Promise.reject(new Error('Rejected'));
+const rejectPromise = new Promise(reject => setTimeout(reject, 1000, new Error('rejected')))
 myPromiseAll([promise1, rejectPromise, promise3])
     .then(results => console.log(results))
     .catch(error => console.error(error.message)); // 'Rejected'

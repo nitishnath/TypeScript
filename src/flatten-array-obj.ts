@@ -1,4 +1,4 @@
-const arr = [[[3,5,6,[5,10, 'p']]]]
+const arr = [[[3,5,6,[5,10, 'p', null]]]]
 
 function flattenArr<T>(arr: (T | T[])[]): T[] {
     const output: T[] = [];
