@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "build:browser:async-await": "tsc -p tsconfig.browser.json",
+    "watch:browser:async-await": "tsc -p tsconfig.browser.json -w --preserveWatchOutput",
     "dev": "tsc --project . && node dist/generics.js",
+    "serve": "python3 -m http.server 5173",
+    "serve:5174": "python3 -m http.server 5174",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
