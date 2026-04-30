@@ -48,8 +48,8 @@ Array.prototype.myReduce = function<T, U>(
 
 // Test the implementation
 const numbers = [1, 2, 3, 4, 5];
-const sum = numbers.myReduce((acc, curr) => acc + curr, 0);
-console.log(sum, 'sum with initial value');
+const sum = numbers.myReduce((acc, curr) => acc + curr, '');
+console.log(sum, 'sum with initial value'); //'12345'
 
 const sum2 = numbers.myReduce((acc, curr) => acc + curr);
 console.log(sum2, 'sum without initial value');
