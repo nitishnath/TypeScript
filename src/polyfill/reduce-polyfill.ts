@@ -1,7 +1,7 @@
 
 // declaration merging
 // It means that I want to modify a type that exists in the global scope.
-// Now TS will now that we added myReduce to Array.prototype at compile time.
+// Now TS will notify that we added myReduce to Array.prototype at compile time.
 
 declare global {
     interface Array<T> {
@@ -20,7 +20,7 @@ Array.prototype.myReduce = function<T, U>(
     const arr = Object.prototype.toString.call(this) === '[object Array]' ? this as T[] : Array.from(this);
     
     // Edge case: empty array with no initial value(TypeError)
-    if (arr.length === 0 && initialValue === undefined) {
+    if (arr.length === 0 || initialValue === undefined) {
         throw new TypeError('Reduce of empty array with no initial value');
     }
 
@@ -47,9 +47,9 @@ Array.prototype.myReduce = function<T, U>(
 }
 
 // Test the implementation
-const numbers = [1, 2, 3, 4, 5];
-const sum = numbers.myReduce((acc, curr) => acc + curr, '');
+const numbers:(number)[] = [1, 2, 3, 4, 5];
+const sum = numbers.myReduce<string>((acc, curr) => acc + curr, undefined);
 console.log(sum, 'sum with initial value'); //'12345'
 
-const sum2 = numbers.myReduce((acc, curr) => acc + curr);
+const sum2 = numbers.myReduce((acc, curr) => (acc as number) + (curr as number));
 console.log(sum2, 'sum without initial value');
