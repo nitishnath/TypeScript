@@ -53,7 +53,8 @@ Array.prototype.myPracticeFilter = function<T> (
     if(this == null) throw new TypeError('this is null or undefined');
     if(typeof callback !== 'function') throw new TypeError(callback + 'is not a function');
 
-    const arr = Object.prototype.toString.call(this) === '[object Array]' ? this as T[] : Array.from(this);
+    // const arr = Object.prototype.toString.call(this) === '[object Array]' ? this as T[] : Array.from(this);
+    const arr: T[] = Object.prototype.toString.call(this) === '[object Array]' ? this as T[] : Array.from(this as ArrayLike<T>)
     const result: T[] = [];
 
     for(let i = 0; i < arr.length; i++) {
