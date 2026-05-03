@@ -5,7 +5,7 @@ interface Calculator {
 
 const calc: Calculator = {
     value: 100,
-    add(a, b) {
+    add: function(a: number, b: number) {
         return a + b + this.value
     }
 }
