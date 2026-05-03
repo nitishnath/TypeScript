@@ -47,6 +47,7 @@ Function.prototype.myCall = function<T, A extends unknown[], R>(
     // Attach function temporarily onto the object
     (context as Record<PropertyKey, unknown>)[fnKey] = this;
 
+    //invoke
     let result = (context as Record<PropertyKey, (...args:A) => R>)[fnKey](...args);
 
     // cleanup
